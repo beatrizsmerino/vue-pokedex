@@ -1,0 +1,5 @@
+-> Determinar el directorio actual
+pwd
+
+-> Clonar un repositorio entero de github
+git clone https://github.com/rubnvp/vue-pokedex.git
