@@ -19,17 +19,6 @@
 
    <div id="app" class="main-content">
       <aside class="pokedex-filters">
-
-         <!--  Access and draw data with text interpolation. -->
-         {{message}}
-         <!--
-            Since the console of browser, we can...
-            - To draw the value:
-            app.message;
-            - To change the value:
-            app.message = "Welcome";
-         -->
-
          <div class="nice-input-wrapper">
             <input type="text" placeholder="Search by name" class="nice-input">
             <span class="focus-border">
@@ -148,94 +137,16 @@
                   </i>
                </span>
                <div class="image-wrapper">
-                  <img src="images/pokemons/bulbasaur.png" alt="bulbasaur" class="pokemon-image"></div>
+                  <!--
+                     The html attributes can not be modified using the text interpolation.
+                     In this case we link the property using a directive: v-bind
+                     The way large -> v-bind:attr*
+                     The way short -> :attr*
+                     * Here attr it is the name of the attribute
+                  -->
+                  <img v-bind:src="pokemon.image" :alt="pokemon.name" class="pokemon-image"></div>
                <div class="pokemon-title">
-                  bulbasaur
-               </div>
-            </div>
-
-            <div class="pokemon-card">
-               <div class="background-wrapper">
-                  <div style="background-color: rgb(160, 64, 160);"></div>
-                  <div style="background-color: rgb(120, 200, 80);"></div>
-               </div>
-               <span class="remove-pokemon">
-                  <i class="material-icons">
-                     close
-                  </i>
-               </span>
-               <div class="image-wrapper">
-                  <img src="images/pokemons/ivysaur.png" alt="bulbasaur" class="pokemon-image">
-               </div>
-               <div class="pokemon-title">
-                  ivysaur
-               </div>
-            </div>
-
-            <div class="pokemon-card">
-               <div class="background-wrapper">
-                  <div style="background-color: rgb(160, 64, 160);"></div>
-                  <div style="background-color: rgb(120, 200, 80);"></div>
-               </div>
-               <span class="remove-pokemon">
-                  <i class="material-icons">
-                     close
-                  </i>
-               </span>
-               <div class="image-wrapper">
-                  <img src="images/pokemons/venusaur.png" alt="bulbasaur" class="pokemon-image">
-               </div>
-               <div class="pokemon-title">
-                  venusaur
-               </div>
-            </div>
-
-            <div class="pokemon-card">
-               <div class="background-wrapper">
-                  <div style="background-color: rgb(240, 128, 48);"></div>
-               </div>
-               <span class="remove-pokemon">
-                  <i class="material-icons">
-                     close
-                  </i>
-               </span>
-               <div class="image-wrapper">
-                  <img src="images/pokemons/charmander.png" alt="bulbasaur" class="pokemon-image"></div>
-               <div class="pokemon-title">
-                  charmander
-               </div>
-            </div>
-
-            <div class="pokemon-card">
-               <div class="background-wrapper">
-                  <div style="background-color: rgb(240, 128, 48);"></div>
-               </div>
-               <span class="remove-pokemon">
-                  <i class="material-icons">
-                     close
-                  </i>
-               </span>
-               <div class="image-wrapper">
-                  <img src="images/pokemons/charmeleon.png" alt="bulbasaur" class="pokemon-image"></div>
-               <div class="pokemon-title">
-                  charmeleon
-               </div>
-            </div>
-
-            <div class="pokemon-card">
-               <div class="background-wrapper">
-                  <div style="background-color: rgb(168, 144, 240);"></div>
-                  <div style="background-color: rgb(240, 128, 48);"></div>
-               </div>
-               <span class="remove-pokemon">
-                  <i class="material-icons">
-                     close
-                  </i>
-               </span>
-               <div class="image-wrapper">
-                  <img src="images/pokemons/charizard.png" alt="bulbasaur" class="pokemon-image"></div>
-               <div class="pokemon-title">
-                  charizard
+                  {{ pokemon.name }}
                </div>
             </div>
          </article>
@@ -243,9 +154,9 @@
    </div>
 
    <!-- 
-         Charge the vue without minify. 
-         For development of the proyect it's better to use the version not minify because the minify fixes bugs and this can't be seen.
-      -->
+      Charge the vue without minify. 
+      For development of the proyect it's better to use the version not minify because the minify fixes bugs and this can't be seen.
+   -->
    <script src="http://unpkg.com/vue"></script>
 
    <!-- File to work with vue -->
