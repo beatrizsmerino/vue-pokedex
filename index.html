@@ -128,8 +128,8 @@
          <article class="pokemons-list">
             <div class="pokemon-card">
                <div class="background-wrapper">
-                  <div style="background-color: rgb(160, 64, 160);"></div>
-                  <div style="background-color: rgb(120, 200, 80);"></div>
+                  <!-- Draw the data with js in line -->
+                  <div :style="'background-color: ' + TYPE_COLOR[pokemon.types[0]] + ';'"></div>
                </div>
                <span class="remove-pokemon">
                   <i class="material-icons">
@@ -137,13 +137,6 @@
                   </i>
                </span>
                <div class="image-wrapper">
-                  <!--
-                     The html attributes can not be modified using the text interpolation.
-                     In this case we link the property using a directive: v-bind
-                     The way large -> v-bind:attr*
-                     The way short -> :attr*
-                     * Here attr it is the name of the attribute
-                  -->
                   <img v-bind:src="pokemon.image" :alt="pokemon.name" class="pokemon-image"></div>
                <div class="pokemon-title">
                   {{ pokemon.name }}
