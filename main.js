@@ -2,6 +2,11 @@
 var app = new Vue({ // Pass a object
     el: '#app', // Element of the DOM controlled by vue
     data: {
-        message: "Hello fictizia!" // Mensage draw with an interpolation
+        applicationName: "Vue - Pokedex", // Menssage draw with an interpolation
+    },
+    methods: {
+        applicationNameView: function() {
+            return this.applicationName;
+        }
     }
 });

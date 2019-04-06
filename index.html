@@ -1,35 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="app"> <!-- CONSOLE BUG. Do not mount Vue to <html> or <body> - mount to normal elements instead.-->
 
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
    <link rel="shortcut icon" href="images/favicon.ico">
-   <title>Vue Pokedex</title>
+   <title>
+      <!--  Access and draw data with text interpolation. -->
+      <!-- This not working because the class/id that controls for vue can't to be in the tag html or body -->
+      {{ applicationName }}
+   </title>
    <!-- CSS -->
    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
    <header class="main-header">
-      Vue - Pokedex
+      <!--  Access and draw data with text interpolation since the value that return one method. -->
+      <!-- This not working because the class/id that controls for vue can't to be in the tag html or body -->
+      {{ applicationNameView() }}
+      <!--
+         Since the console of browser, we can...
+         - To draw the value:
+         app.applicationName;
+         - To change the value:
+         app.applicationName = "Welcome";
+      -->
    </header>
 
 
-   <div id="app" class="main-content">
+   <div class="main-content">
       <aside class="pokedex-filters">
-
-         <!--  Access and draw data with text interpolation. -->
-         {{message}}
-         <!--
-            Since the console of browser, we can...
-            - To draw the value:
-            app.message;
-            - To change the value:
-            app.message = "Welcome";
-         -->
-
          <div class="nice-input-wrapper">
             <input type="text" placeholder="Search by name" class="nice-input">
             <span class="focus-border">
@@ -243,9 +245,9 @@
    </div>
 
    <!-- 
-         Charge the vue without minify. 
-         For development of the proyect it's better to use the version not minify because the minify fixes bugs and this can't be seen.
-      -->
+      Charge the vue without minify. 
+      For development of the proyect it's better to use the version not minify because the minify fixes bugs and this can't be seen.
+   -->
    <script src="http://unpkg.com/vue"></script>
 
    <!-- File to work with vue -->
