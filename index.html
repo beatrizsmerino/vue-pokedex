@@ -15,6 +15,17 @@
       </header>
       <div id="app" class="main-content">
          <aside class="pokedex-filters">
+
+            <!--  Access and draw data with text interpolation. -->
+            {{message}}
+            <!--
+               Since the console of browser, we can...
+               - To draw the value:
+               app.message;
+               - To change the value:
+               app.menssage = "Welcome";
+            -->
+
             <div class="nice-input-wrapper"><input type="text" placeholder="Search by name" class="nice-input"> <span class="focus-border"><i></i></span></div>
             <p class="checkboxes-list-title">Type</p>
             <div class="checkboxes-list">
@@ -97,5 +108,14 @@
             </article>
          </main>
       </div>
+
+      <!-- 
+         Charge the vue without minify. 
+         For development of the proyect it's better to use the version not minify because the minify fixes bugs and this can't be seen.
+      -->
+      <script src="http://unpkg.com/vue"></script>
+
+      <!-- File to work with vue -->
+      <script src="main.js"></script>      
    </body>
 </html>
