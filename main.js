@@ -27,5 +27,13 @@ var app = new Vue({ // Pass a object
             "normal": "#A8A878",
             "electric": "#F8D030"
         },
-    }
+    },
+    // Methods that can be called during the life cycle of the instance
+    created() { // After creating the instance and before the html template is created
+        console.log("Created");
+    },
+    mounted: function () { // after mounting the html template in the DOM
+        console.log("Mounted");
+        debugger;
+    },
 });
