@@ -37,11 +37,13 @@ var app = new Vue({ // Pass a object
         // Console.log() draws the info inside of table
         // Read and save the file inside of the empty array created in the property "data"
         
+        // Arrow function
+        // 1. Promise: Parameter => return a value directly
+        // 2. Promise: Parameter => execute an action
+
         fetch("https://api.jsonbin.io/b/5ab37f77989617146bd6eb29")
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (pokemons) {
+            .then(response => response.json())
+            .then(pokemons => {
                 // table data json
                 console.table(pokemons);
                 that.pokemons = pokemons;
