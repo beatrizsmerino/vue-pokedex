@@ -138,7 +138,14 @@
 
       <main class="main-view">
          <article class="pokemons-list">
-            <div class="pokemon-card">
+            <!-- 
+               Loop:
+               - Directive v-for
+               He goes through the list of pokemons and in each round draws one
+               - Directive :key
+               Of each pokemon take the id as primary key 
+            -->
+            <div v-for="pokemon in pokemons" :key="pokemon.id" class="pokemon-card">
                <div class="background-wrapper">
                   <div :style="{ 'background-color': TYPE_COLOR[pokemon.types[0]] }"></div>
                </div>
