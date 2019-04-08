@@ -39,14 +39,11 @@ var app = new Vue({ // Pass a object
         
         // Arrow function
         // 1. Promise: Parameter => return a value directly
-        // 2. Promise: Parameter => execute an action
+        // 2. Promise: Parameter => First execute the console.log() if it is true execute the action
+        // Debug in an arrow function: JavaScript evaluates sub-expressions left to right and then act depending on their boolean equivalent.
 
         fetch("https://api.jsonbin.io/b/5ab37f77989617146bd6eb29")
             .then(response => response.json())
-            .then(pokemons => {
-                // table data json
-                console.table(pokemons);
-                that.pokemons = pokemons;
-            })
+            .then(pokemons => console.table(pokemons) || (this.pokemons = pokemons))
     },
 });
