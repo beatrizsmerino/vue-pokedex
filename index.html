@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> 
 
 <head>
    <meta charset="UTF-8">
@@ -9,6 +9,12 @@
    <title>Vue Pokedex</title>
    <!-- CSS -->
    <link rel="stylesheet" href="style.css">
+   <style>
+      /* Hidden elements a few seg */
+      [v-cloak]{
+         display: none;
+      }
+   </style>
 </head>
 
 <body>
@@ -16,8 +22,14 @@
       Vue - Pokedex
    </header>
 
-
-   <div id="app" class="main-content">
+   <!-- 
+      When the page load, there are a few seconds where you see the text interpolation.
+      To avoid that flicker, we use a trick for hide the elements before of that run the method mounted().
+      v-cloak
+      - 1. to give the atribute in the element of the DOM controlled by vue
+      - 2. In the styles create a selector with this atributte in display: none;
+   -->
+   <div id="app" class="main-content" v-cloak> 
       <aside class="pokedex-filters">
          <div class="nice-input-wrapper">
             <input type="text" placeholder="Search by name" class="nice-input">
@@ -126,7 +138,14 @@
 
       <main class="main-view">
          <article class="pokemons-list">
-            <div class="pokemon-card">
+            <!-- 
+               Loop:
+               - Directive v-for
+               He goes through the list of pokemons and in each round draws one
+               - Directive :key
+               Of each pokemon take the id as primary key 
+            -->
+            <div v-for="pokemon in pokemons" :key="pokemon.id" class="pokemon-card">
                <div class="background-wrapper">
                   <div :style="{ 'background-color': TYPE_COLOR[pokemon.types[0]] }"></div>
                </div>
