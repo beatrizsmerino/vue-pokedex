@@ -11,7 +11,7 @@
    <link rel="stylesheet" href="style.css">
    <style>
       /* Hidden elements a few seg */
-      [v-cloak]{
+      [v-cloak] {
          display: none;
       }
    </style>
@@ -29,7 +29,7 @@
       - 1. to give the atribute in the element of the DOM controlled by vue
       - 2. In the styles create a selector with this atributte in display: none;
    -->
-   <div id="app" class="main-content" v-cloak> 
+   <div id="app" class="main-content" v-cloak>
       <aside class="pokedex-filters">
          <div class="nice-input-wrapper">
             <input type="text" placeholder="Search by name" class="nice-input">
@@ -147,7 +147,14 @@
             -->
             <div v-for="(pokemon, index) in pokemons" :key="pokemon.id" class="pokemon-card">
                <div class="background-wrapper">
-                  <div :style="{ 'background-color': TYPE_COLOR[pokemon.types[0]] }"></div>
+                  <!-- <div :style="{ 'background-color': TYPE_COLOR[pokemon.types[0]] }"></div> -->
+                  <!-- 
+                     Loop:
+                     - Go through all the types that a pokemon has.
+                     - In each loop turn find the type in the list of types of pokemons
+                     - And draw the color that has that type 
+                  -->
+                  <div v-for="type in pokemon.types" :key="type" :style="{ 'background-color': TYPE_COLOR[type] }"></div>
                </div>
 
                <!--
