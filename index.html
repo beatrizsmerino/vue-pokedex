@@ -146,34 +146,25 @@
                Of each pokemon take the id as primary key 
             -->
             <div v-for="(pokemon, index) in pokemons" :key="pokemon.id" class="pokemon-card">
-               
                <div class="background-wrapper">
                   <div :style="{ 'background-color': TYPE_COLOR[pokemon.types[0]] }"></div>
                </div>
-               <span class="remove-pokemon">
+
+               <!--
+                  Directive:
+                  - v-on:click / @click -> event click execute function
+               -->
+               <!-- <span class="remove-pokemon" v-on:click="removePokemon(pokemon)"> -->
+               <span class="remove-pokemon" @click="removePokemon(pokemon)">
                   <i class="material-icons">
                      close
                   </i>
                </span>
-               <div class="image-wrapper">
-                  <!--
-                     CONDITIONALS
-                     - v-if
-                     - v-else-if
-                     - v-else
-                  -->
-                  <!-- v-if="index % 2" -> conditional for pokemons pars -->
-                  <img v-if="index % 2" v-bind:src="pokemon.image" :alt="pokemon.name" class="pokemon-image">
-               </div>
-               
 
-               <div class="pokemon-title" v-if="index > 5">
-                  {{ pokemon.name }} {{ index }}
+               <div class="image-wrapper">
+                  <img v-bind:src="pokemon.image" :alt="pokemon.name" class="pokemon-image">
                </div>
-               <div class="pokemon-title" v-else-if="index < 5">
-                  {{ index }}
-               </div>
-               <div class="pokemon-title" v-else>
+               <div class="pokemon-title">
                   {{ pokemon.name }}
                </div>
             </div>

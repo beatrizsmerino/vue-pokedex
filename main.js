@@ -14,6 +14,35 @@ var app = new Vue({ // Pass a object
         },
         pokemons: [],
     },
+    // METHODS:
+    // actions/functions
+    methods: {
+        // The function removePokemon recived 1 parameter
+        removePokemon(pokemonToRemove) {
+            // WAY 1 -> Find it in the array and remove it
+            // Find the pokemon in the array pokemons
+            // Compare if the id of pokemon it is the same that the parameter
+            // Access the list of pokemons and give a new value
+            // Access the list of pokemons and of those pokemons remove the first that coincide with the const index
+            //
+            // const index = this.pokemons.findIndex(pokemon => pokemon.id === pokemonToRemove);
+            // this.pokemons = this.pokemons.splice(index, 1);
+
+            // WAY 2 -> Find it in the array and remove it
+            // It is the same as the previous example, but in this one compare by the all pokemon
+            //
+            // const index = this.pokemons.findIndex(pokemon => pokemon === pokemonToRemove);
+            // this.pokemons = this.pokemons.splice(index, 1);
+
+            // WAY 3 -> the same but with filter function
+            // Access the list of pokemons and give a new value
+            // Access the list of pokemons and choose all pokemons except the pokemon that we went through the function parameter 
+            //
+            this.pokemons = this.pokemons.filter(pokemon => pokemon !== pokemonToRemove);
+
+            // In all cases we remove the pokemons of the array and and we can not get it back
+        },
+    },
     created() {
         // Call AJAX for o have all pokemons of the file json
         // Here we have 2 this:
