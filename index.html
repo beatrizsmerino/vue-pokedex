@@ -145,7 +145,8 @@
                - Directive :key
                Of each pokemon take the id as primary key 
             -->
-            <div v-for="pokemon in pokemons" :key="pokemon.id" class="pokemon-card">
+            <div v-for="(pokemon, index) in pokemons" :key="pokemon.id" class="pokemon-card">
+               
                <div class="background-wrapper">
                   <div :style="{ 'background-color': TYPE_COLOR[pokemon.types[0]] }"></div>
                </div>
@@ -155,8 +156,24 @@
                   </i>
                </span>
                <div class="image-wrapper">
-                  <img v-bind:src="pokemon.image" :alt="pokemon.name" class="pokemon-image"></div>
-               <div class="pokemon-title">
+                  <!--
+                     CONDITIONALS
+                     - v-if
+                     - v-else-if
+                     - v-else
+                  -->
+                  <!-- v-if="index % 2" -> conditional for pokemons pars -->
+                  <img v-if="index % 2" v-bind:src="pokemon.image" :alt="pokemon.name" class="pokemon-image">
+               </div>
+               
+
+               <div class="pokemon-title" v-if="index > 5">
+                  {{ pokemon.name }} {{ index }}
+               </div>
+               <div class="pokemon-title" v-else-if="index < 5">
+                  {{ index }}
+               </div>
+               <div class="pokemon-title" v-else>
                   {{ pokemon.name }}
                </div>
             </div>
