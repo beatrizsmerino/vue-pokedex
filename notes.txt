@@ -7,3 +7,29 @@ git clone https://github.com/rubnvp/vue-pokedex.git
 -> Guia vue
 https://vuejs.org/v2/guide/
 
+-> JSON pokemons
+https://api.jsonbin.io/b/5ab37f77989617146bd6eb29
+
+-> Eventos vue
+https://vuejs.org/v2/guide/events.html
+
+-> ¿Cómo funciona la reactividad en VueJS? Implementando un sistema reactivo desde cero | T3chFest 2019
+https://www.youtube.com/watch?v=axXwWU-L7RM
+
+-> Vue.js devtools
+https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd?hl=es
+
+-> Vue Cheatsheet:
+https://vuejs-tips.github.io/cheatsheet/
+
+-> Form Input Bindings:
+https://vuejs.org/v2/guide/forms.html
+
+-> Filters:
+https://vuejs.org/v2/guide/filters.html
+
+-> Watchers:
+https://vuejs.org/v2/guide/computed.html#Watchers
+
+-> Dinner Calculator:
+https://pastebin.com/raw/Kk7aGTfy
