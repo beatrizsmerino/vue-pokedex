@@ -7,10 +7,8 @@
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
    <link rel="shortcut icon" href="images/favicon.ico">
    <title>Vue Pokedex</title>
-   <!-- CSS -->
    <link rel="stylesheet" href="style.css">
    <style>
-      /* Hidden elements a few seg */
       [v-cloak]{
          display: none;
       }
@@ -22,39 +20,9 @@
       Vue - Pokedex
    </header>
 
-   <!-- 
-      When the page load, there are a few seconds where you see the text interpolation.
-      To avoid that flicker, we use a trick for hide the elements before of that run the method mounted().
-      v-cloak
-      - 1. to give the atribute in the element of the DOM controlled by vue
-      - 2. In the styles create a selector with this atributte in display: none;
-   -->
    <div id="app" class="main-content" v-cloak> 
       <aside class="pokedex-filters">
          <div class="nice-input-wrapper">
-            <!--
-               Double data bind
-               - @input
-               - :value
-               - v-model
-            -->
-            <!-- 
-               // searchText -> "data" is empty in main.js, when takes value this it is recibed by the function filteredPokemons()
-               // setSearchText -> it is another function that takes the value and use the function filter and includes for to save the result inside of he array empty filteredPokemons in main.js
-               // This way of solving it isn`t the best, because you need to create two arrays with repeated info. 
-               <input @input="setSearchText" :value="searchText" type="text" placeholder="Search by name" class="nice-input" >
-            -->
-            <!-- 
-               // Now the @input gives the value in inline and so the function setSearchText() isn't necessary
-               <input @input="searchText = $event.target.value" :value="searchText" type="text" placeholder="Search by name" class="nice-input" >
-               // But this way of solving it isn`t the best.
-            -->
-            <!--
-               // The directive v-model make the double binding in one
-               // we declared searchText empty
-               // And use the function computed filteredPokemons() that makes the filter on the same array pokemons with all the info
-               // In each case that execute de event the computed property is executed
-            -->
             <input v-model="searchText" type="text" placeholder="Search by name" class="nice-input">
             <span class="focus-border">
                <i></i>
@@ -161,30 +129,11 @@
 
       <main class="main-view">
          <article class="pokemons-list">
-            <!-- 
-               Loop:
-               - Directive v-for
-               He goes through the list of pokemons and in each round draws one
-               - Directive :key
-               Of each pokemon take the id as primary key 
-            -->
             <div v-for="(pokemon, index) in filteredPokemons" :key="pokemon.id" class="pokemon-card">
                <div class="background-wrapper">
-                  <!-- <div :style="{ 'background-color': TYPE_COLOR[pokemon.types[0]] }"></div> -->
-                  <!-- 
-                     Loop:
-                     - Go through all the types that a pokemon has.
-                     - In each loop turn find the type in the list of types of pokemons
-                     - And draw the color that has that type 
-                  -->
                   <div v-for="type in pokemon.types" :key="type" :style="{ 'background-color': TYPE_COLOR[type] }"></div>
                </div>
 
-               <!--
-                  Directive:
-                  - v-on:click / @click -> event click execute function
-               -->
-               <!-- <span class="remove-pokemon" v-on:click="removePokemon(pokemon)"> -->
                <span class="remove-pokemon" @click="removePokemon(pokemon)">
                   <i class="material-icons">
                      close
@@ -202,13 +151,7 @@
       </main>
    </div>
 
-   <!-- 
-      Charge the vue without minify. 
-      For development of the proyect it's better to use the version not minify because the minify fixes bugs and this can't be seen.
-   -->
    <script src="http://unpkg.com/vue"></script>
-
-   <!-- File to work with vue -->
    <script src="main.js"></script>
 </body>
 
