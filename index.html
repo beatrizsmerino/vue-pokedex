@@ -32,7 +32,30 @@
    <div id="app" class="main-content" v-cloak>
       <aside class="pokedex-filters">
          <div class="nice-input-wrapper">
-            <input type="text" placeholder="Search by name" class="nice-input">
+            <!--
+               Double data bind
+               - @input
+               - :value
+               - v-model
+            -->
+            <!-- 
+               // searchText -> "data" is empty in main.js, when takes value this it is recibed by the function filteredPokemons()
+               // setSearchText -> it is another function that takes the value and use the function filter and includes for to save the result inside of he array empty filteredPokemons in main.js
+               // This way of solving it isn`t the best, because you need to create two arrays with repeated info. 
+               <input @input="setSearchText" :value="searchText" type="text" placeholder="Search by name" class="nice-input" >
+            -->
+            <!-- 
+               // Now the @input gives the value in inline and so the function setSearchText() isn't necessary
+               <input @input="searchText = $event.target.value" :value="searchText" type="text" placeholder="Search by name" class="nice-input" >
+               // But this way of solving it isn`t the best.
+            -->
+            <!--
+               // The directive v-model make the double binding in one
+               // we declared searchText empty
+               // And use the function computed filteredPokemons() that makes the filter on the same array pokemons with all the info
+               // In each case that execute de event the computed property is executed
+            -->
+            <input v-model="searchText" type="text" placeholder="Search by name" class="nice-input">
             <span class="focus-border">
                <i></i>
             </span>
@@ -145,7 +168,7 @@
                - Directive :key
                Of each pokemon take the id as primary key 
             -->
-            <div v-for="(pokemon, index) in pokemons" :key="pokemon.id" class="pokemon-card">
+            <div v-for="(pokemon, index) in filteredPokemons" :key="pokemon.id" class="pokemon-card">
                <div class="background-wrapper">
                   <!-- <div :style="{ 'background-color': TYPE_COLOR[pokemon.types[0]] }"></div> -->
                   <!-- 

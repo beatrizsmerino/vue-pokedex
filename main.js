@@ -13,9 +13,27 @@ var app = new Vue({ // Pass a object
             "electric": "#F8D030"
         },
         pokemons: [],
+        // filteredPokemons: [],
+        searchText: ''
+    },
+    // COMPUTED:
+    // When the Vue is instantiated, computed properties are converted into a property of the Vue with a getter and sometimes a setter.
+    // Basically you can think of a computed value as a derived value that will be automatically updated whenever one of the underlying values used to calculate it is updated.
+    // You don't call a computed and it doesn't accept any parameters.
+    //
+    // searchText -> property in "data" that it is empty in main.js
+    // The filter function received this value and makes a filter.
+    // filter() -> create a new array with all the elements that meet the condition implemented by the given function.
+    // includes() -> determines if an array includes a certain element, returns true or false as appropriate.
+    computed: {
+        filteredPokemons(){
+            return this.pokemons.filter(pokemon => pokemon.name.includes(this.searchText));
+        }
     },
     // METHODS:
-    // actions/functions
+    // actions/functions -> A method is just a function bound to the Vue instance.
+    // It will only be evaluated when you explicitly call it.
+    // Like all javascript functions it accepts parameters and will be re- evaluated every time it's called.
     methods: {
         // The function removePokemon recived 1 parameter
         removePokemon(pokemonToRemove) {
@@ -42,6 +60,10 @@ var app = new Vue({ // Pass a object
 
             // In all cases we remove the pokemons of the array and and we can not get it back
         },
+        // setSearchText(event) {
+        //     this.searchText = event.target.value;
+        //     this.filteredPokemons = this.pokemons.filter(pokemon => pokemon.name.includes(this.searchText));
+        // }
     },
     created() {
         // Call AJAX for o have all pokemons of the file json
