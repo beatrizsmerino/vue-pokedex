@@ -12,11 +12,16 @@ var app = new Vue({
             "electric": "#F8D030"
         },
         pokemons: [],
-        searchText: ''
+        searchText: '',
+        // FILTER BY ONE
+        filterByGrass: false,
     },
     computed: {
         filteredPokemons(){
-            return this.pokemons.filter(pokemon => pokemon.name.includes(this.searchText));
+            return this.pokemons
+                .filter(pokemon => pokemon.name.includes(this.searchText))
+                // FILTER BY ONE
+                .filter(pokemon => this.filterByGrass ? pokemon.name.includes("grass") : true)
         }
     },
     methods: {
